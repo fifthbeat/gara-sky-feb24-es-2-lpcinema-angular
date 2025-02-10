@@ -1,8 +1,21 @@
 import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
+import { provideStore } from '@ngrx/store';
+import { provideEffects } from '@ngrx/effects';
+import { provideStoreDevtools } from '@ngrx/store-devtools';
+import { CONTENTSTACK_CONFIG } from './services/content-stack.service';
 
-import { routes } from './app.routes';
+const contentstackConfig = {
+  api_key: 'YOUR_API_KEY',
+  delivery_token: 'YOUR_DELIVERY_TOKEN',
+  environment: 'YOUR_ENVIRONMENT'
+};
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes)]
+  providers: [
+    { provide: CONTENTSTACK_CONFIG, useValue: contentstackConfig },
+    provideZoneChangeDetection({ eventCoalescing: true }),
+    // provideStore({ landingPages: landingPageReducer }),
+    // provideEffects([LandingPageEffects]),
+    // provideStoreDevtools({ maxAge: 25 })
+  ]
 };
