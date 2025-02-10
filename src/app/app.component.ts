@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ContentStackService } from './services/content-stack.service';
 
 @Component({
   selector: 'app-root',
@@ -16,4 +17,8 @@ export class AppComponent {
     { title: 'About', path: '/about', description: 'Learn more about us' },
     { title: 'Contact', path: '/contact', description: 'Get in touch with us' }
   ];
+
+  constructor(readonly contentStackService: ContentStackService) {
+    this.contentStackService.fetchLandingPages()
+  }
 }

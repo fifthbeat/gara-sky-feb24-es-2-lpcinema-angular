@@ -1,15 +1,8 @@
 import { Inject, Injectable, InjectionToken } from '@angular/core';
-import * as Contentstack from 'contentstack';
-import { Stack } from 'contentstack';
+import Contentstack from 'contentstack';
+import { Stack, Config } from 'contentstack';
 import { from, Observable } from 'rxjs';
-
-export interface ContentstackConfig {
-  api_key: string;
-  delivery_token: string;
-  environment: string;
-}
-
-export const CONTENTSTACK_CONFIG = new InjectionToken<ContentstackConfig>('ContentstackConfig');
+import { CONTENTSTACK_CONFIG } from '../app.config';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +10,13 @@ export const CONTENTSTACK_CONFIG = new InjectionToken<ContentstackConfig>('Conte
 export class ContentStackService {
   private stack: Stack;
 
-  constructor(@Inject(CONTENTSTACK_CONFIG) private config: ContentstackConfig) {
+  constructor(@Inject(CONTENTSTACK_CONFIG) private config: Config) {
     this.stack = Contentstack.Stack(config);
   }
 
   fetchLandingPages(): Observable<any> {
     const Query = this.stack.ContentType('landing_page').Query();
+    Query.where('title', 'Angular');  // Filter for entries with title "angular"
     // Wrap the promise in an Observable
     return from(Query.toJSON().find());
   }
