@@ -1,24 +1,23 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { ContentStackService } from './services/content-stack.service';
+import { HeaderComponent } from "./components/header/header.component";
+import { StackEntry } from './models/stack-entry';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'es-2-lpcinema-angular';
-  landingPages = [
-    { title: 'Home', path: '/home', description: 'Welcome to the home page' },
-    { title: 'About', path: '/about', description: 'Learn more about us' },
-    { title: 'Contact', path: '/contact', description: 'Get in touch with us' }
-  ];
+  stack: StackEntry | undefined;
 
   constructor(readonly contentStackService: ContentStackService) {
-    this.contentStackService.fetchLandingPages()
+    this.contentStackService.fetchLandingPages().subscribe(entries => {
+      this.stack = entries[0] as StackEntry;
+    })
   }
 }

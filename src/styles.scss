@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+  font-family: 'Sky';
+  src: url('/fonts/Sky_Reg.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sky';
+  src: url('/fonts/Sky_Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Sky';
+  src: url('/fonts/Sky_Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'Sky';
+  src: url('/fonts/Sky_Med.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SkyText';
+  src: url('/fonts/SkyText_Lt.ttf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SkyText';
+  src: url('/fonts/SkyText-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+
+body {
+  font-family: 'Sky', sans-serif;
+}
