@@ -1,1 +1,6 @@
 <pre> {{data() | json}} </pre>
+
+<div class="text-center">
+<h1 [ngClass]="addTextStyle(data().group.title.style[0]?.color, data().group.title.style[0]?.tag)">{{data().title}}</h1>
+<p [ngClass]="addTextStyle(data().text.style[0]?.color, data().text.style[0]?.size)" [innerHTML]="data().text.content"></p>
+</div>
