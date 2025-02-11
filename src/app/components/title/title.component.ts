@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   standalone: true,
   templateUrl: './title.component.html',
-  styleUrl: './title.component.css'
+  styleUrl: './title.component.scss'
 })
 export class TitleComponent {
 

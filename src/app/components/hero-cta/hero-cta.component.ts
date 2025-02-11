@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   standalone: true,
   templateUrl: './hero-cta.component.html',
-  styleUrl: './hero-cta.component.css'
+  styleUrl: './hero-cta.component.scss'
 })
 export class HeroCtaComponent {
 

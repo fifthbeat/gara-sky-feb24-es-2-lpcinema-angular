@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   standalone: true,
   templateUrl: './carousel.component.html',
-  styleUrl: './carousel.component.css'
+  styleUrl: './carousel.component.scss'
 })
 export class CarouselComponent {
 

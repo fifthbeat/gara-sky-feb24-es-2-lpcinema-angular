@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   standalone: true,
   templateUrl: './sticky-offer.component.html',
-  styleUrl: './sticky-offer.component.css'
+  styleUrl: './sticky-offer.component.scss'
 })
 export class StickyOfferComponent {
 

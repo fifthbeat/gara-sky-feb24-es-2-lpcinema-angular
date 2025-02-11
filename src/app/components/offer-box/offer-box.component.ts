@@ -5,7 +5,7 @@ import { Component } from '@angular/core';
   imports: [],
   standalone: true,
   templateUrl: './offer-box.component.html',
-  styleUrl: './offer-box.component.css'
+  styleUrl: './offer-box.component.scss'
 })
 export class OfferBoxComponent {
 
