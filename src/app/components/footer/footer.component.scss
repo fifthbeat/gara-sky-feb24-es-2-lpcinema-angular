@@ -1,0 +1,34 @@
+ul {
+  list-style-type: none;
+  margin-block-start: 0;
+  margin-block-end: 1px;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+  padding-inline-start: 0;
+
+  li {
+    line-height: 15px;
+    margin-bottom: 24px;
+
+    a {
+      color: #4d4d4d;
+      font-size: 18px;
+      font-weight: 100;
+      letter-spacing: 0;
+      line-height: 24px;
+      text-decoration: none;
+    }
+  }
+}
+
+h4 {
+  color: #4d4d4d;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: .5px;
+  line-height: 22px;
+  pointer-events: none;
+  outline-style: none;
+  text-align: unset;
+  padding: 18.62px 0;
+}
