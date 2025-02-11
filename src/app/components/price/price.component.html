@@ -1,7 +1,20 @@
-<div aria-label="24,90€ al mese per 18 mesi" class="d-flex">
-  <div aria-hidden="true" class="sky-fs-28">24</div>
-  <div aria-hidden="true">
-    <div class="sky-fs-12">,90€</div>
-    <div class="sky-fs-08">al mese per 18 mesi</div>
+<div class="d-flex justify-content-center">
+  <div class="d-flex flex-column">
+    <div aria-label="24,90€ al mese per 18 mesi" class="d-flex align-items-center sky-text-gradient-color">
+      <!-- integerPart -->
+      <div aria-hidden="true" class="large-display">{{ price | splitPrice: 'integerPart' }}</div>
+
+      <div aria-hidden="true">
+        <!-- decimalPart -->
+        <div class="page-title">,{{ price | splitPrice: 'decimalPart' }}€</div>
+        <!-- textPrice -->
+        <div class="body-small sky-text-gradient-color-unset" *ngIf="textPrice">{{ textPrice }}</div>
+      </div>
+
+    </div>
+
+    <div class="body-small fw-medium">nessun costo di attivazione</div>
+    <div class="body-small text-center">Dettaglio dell'offerta</div>
+
   </div>
 </div>
