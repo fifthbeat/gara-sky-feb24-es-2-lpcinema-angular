@@ -5,11 +5,15 @@
       @switch (dynamic._content_type_uid) {
         @case ('hero') {
           @if(isHeroCta(dynamic)) {
-            <!-- <app-title [data]="dynamic"></app-title> -->
+            <!-- [data]="dynamic" -->
+            <app-hero-cta
+            ></app-hero-cta>
           }
         }
         @case ('banner_3_images') {
-        <!-- <app-banner-3-images [data]="dynamic as Banner"></app-banner-3-images> -->
+          @if(isBanner3Images(dynamic)) {
+            <app-banner-3-images [data]="dynamic"></app-banner-3-images>
+          }
         }
         @case ('heading_editorial') {
           @if(isHeadingEditorial(dynamic)) {

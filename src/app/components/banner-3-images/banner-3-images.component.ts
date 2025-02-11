@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { BannerDiscount, BaseEntry } from '../../models/stack-entry';
+import { BannerDiscount, BaseEntry, Separator } from '../../models/stack-entry';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,6 +11,6 @@ import { CommonModule } from '@angular/common';
 })
 export class Banner3ImagesComponent {
 
-  data = input.required<BaseEntry>();
+  data = input.required<Separator>();
 
 }

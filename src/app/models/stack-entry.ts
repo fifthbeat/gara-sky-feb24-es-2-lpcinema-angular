@@ -3,8 +3,15 @@ export interface StackEntry extends BaseEntry {
   sticky: BaseEntry[];
 }
 
+// ----------------- COMMON TYPES -----------------
 
-// Common fields for all entries
+export interface PublishDetails {
+  time: string;
+  user: string;
+  environment: string;
+  locale: string;
+}
+
 export interface BaseEntry {
   _content_type_uid: string;
   uid: string;
@@ -17,17 +24,44 @@ export interface BaseEntry {
   updated_at: string;
   updated_by: string;
   tags: any[];
-  publish_details: {
-    time: string;
-    user: string;
-    environment: string;
-    locale: string;
+  publish_details: PublishDetails;
+}
+
+export interface FileData {
+  uid: string;
+  _version: number;
+  title: string;
+  created_by: string;
+  updated_by: string;
+  created_at: string;
+  updated_at: string;
+  content_type: string;
+  file_size: string;
+  filename: string;
+  ACL: Record<string, any>;
+  parent_uid: string | null;
+  is_dir: boolean;
+  tags: any[];
+  publish_details: PublishDetails;
+  url: string;
+}
+
+export interface ImageData {
+  file: FileData;
+  alt: string;
+}
+
+export interface TextStyle {
+  tag?: string;
+  color: string;
+  size?: string;
+  _metadata: {
+    uid: string;
   };
 }
 
 // ----------------- HERO -----------------
 
-// Button inside a CTA
 export interface Button {
   label: string;
   _metadata: {
@@ -39,30 +73,20 @@ export interface Button {
     title: string;
     href: string;
   };
-  modal: any[]; // Adjust if modal structure is known
+  modal: Modal[]; // You may further type this if the modal structure is known
 }
 
-// Each CTA wrapper
 export interface CTA {
   button: Button;
 }
 
-// Style for text inside groups
-export interface TextStyle {
-  tag?: string; // e.g. "h1" or "h2"
-  color: string;
-  size?: string;
-  _metadata: {
-    uid: string;
-  };
+export interface GroupTitle {
+  title: string;
+  style: TextStyle[];
 }
 
-// Group item for hero content
 export interface HeroGroupItem {
-  title: {
-    title: string;
-    style: TextStyle[];
-  };
+  title: GroupTitle;
   _metadata: {
     uid: string;
   };
@@ -75,28 +99,10 @@ export interface HeroGroupItem {
   }>;
 }
 
-// Info modal inside hero
-export interface Modal {
-  _content_type_uid: string;
-  uid: string;
-  _version: number;
-  locale: string;
-  ACL: Record<string, any>;
-  _in_progress: boolean;
+export interface Modal extends BaseEntry {
   content: string;
-  created_at: string;
-  created_by: string;
-  tags: any[];
   title: string;
   title_modal: string;
-  updated_at: string;
-  updated_by: string;
-  publish_details: {
-    time: string;
-    user: string;
-    environment: string;
-    locale: string;
-  };
 }
 
 export interface Info {
@@ -127,37 +133,32 @@ export interface Hero extends BaseEntry {
   title: string;
 }
 
-// ----------------- CAROUSEL -----------------
+// ----------------- SEPARATOR -----------------
 
-// File information used in images
-export interface FileData {
-  uid: string;
-  _version: number;
-  title: string;
-  created_by: string;
-  updated_by: string;
-  created_at: string;
-  updated_at: string;
-  content_type: string;
-  file_size: string;
-  filename: string;
-  ACL: Record<string, any>;
-  parent_uid: string | null;
-  is_dir: boolean;
-  tags: any[];
-  publish_details: {
-    time: string;
-    user: string;
-    environment: string;
-    locale: string;
-  };
-  url: string;
-}
-
-export interface ImageData {
-  file: FileData;
+export interface Separator extends BaseEntry {
   alt: string;
+  image_desktop: ImageData;
+  image_mobile: ImageData;
+  title: string;
 }
+
+// ----------------- HEADING EDITORIAL -----------------
+
+export interface HeadingEditorial extends BaseEntry {
+  group: {
+    title: {
+      title: string;
+      style: TextStyle[];
+    };
+  };
+  text: {
+    content: string;
+    style: TextStyle[];
+  };
+  title: string;
+}
+
+// ----------------- CAROUSEL -----------------
 
 export interface CarouselCardThumb {
   title: string;
@@ -180,26 +181,6 @@ export interface Carousel extends BaseEntry {
   type: string;
 }
 
-// ----------------- HEADING EDITORIAL -----------------
-
-export interface HeadingGroup {
-  title: {
-    title: string;
-    style: TextStyle[];
-  };
-}
-
-export interface TextContent {
-  content: string;
-  style: TextStyle[];
-}
-
-export interface HeadingEditorial extends BaseEntry {
-  group: HeadingGroup;
-  text: TextContent;
-  title: string;
-}
-
 // ----------------- BANNER DISCOUNT -----------------
 
 export interface ComparePriceDetail {
@@ -209,13 +190,13 @@ export interface ComparePriceDetail {
   line_through: boolean;
 }
 
-export interface ComparePrice {
+export interface BannerDiscountCompare {
   from: ComparePriceDetail;
   to: ComparePriceDetail;
 }
 
 export interface BannerDiscount extends BaseEntry {
-  compare: ComparePrice;
+  compare: BannerDiscountCompare;
   title: string;
 }
 
@@ -223,12 +204,12 @@ export interface BannerDiscount extends BaseEntry {
 
 export interface CardOffer {
   title: string;
-  image: ImageData;
-  thumb_image: ImageData;
-  description: string;
   _metadata: {
     uid: string;
   };
+  image: ImageData;
+  thumb_image: ImageData;
+  description: string;
 }
 
 export interface CardListEntry {
@@ -259,6 +240,7 @@ export interface AccordionGroup extends BaseEntry {
   list: AccordionGroupEntry[];
 }
 
+
 // ----------------- UNION TYPE (optional) -----------------
 
 export type ContentEntry =
@@ -267,5 +249,6 @@ export type ContentEntry =
   | HeadingEditorial
   | BannerDiscount
   | CardList
-  | AccordionGroup;
+  | AccordionGroup
+  | Separator;
 
