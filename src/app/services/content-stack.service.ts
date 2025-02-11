@@ -16,7 +16,8 @@ export class ContentStackService {
 
   fetchLandingPages(): Observable<any> {
     const Query = this.stack.ContentType('landing_page').Query();
-    Query.where('title', 'Angular');  // Filter for entries with title "angular"
+    Query.where('title', 'Prova');  // Filter for entries with title "Angular | Prova"
+    Query.includeReference(["dynamic", "sticky"]); // Include references
     // Wrap the promise in an Observable
     return from(Query.toJSON().find());
   }

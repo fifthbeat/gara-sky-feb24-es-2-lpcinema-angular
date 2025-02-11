@@ -45,3 +45,126 @@
 body {
   font-family: 'Sky', sans-serif;
 }
+
+
+// SKY TEXT COLOR
+
+.sky-text-gradient-color {
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: transparent 0px 0px;
+  background-color: rgb(245, 100, 0);
+  background-image: linear-gradient(to right, rgb(245, 100, 0) 0%, rgb(255, 0, 0) 25%, rgb(181, 0, 125) 50%, rgb(33, 66, 156) 75%, rgb(0, 113, 255) 100%);
+}
+
+.sky-text-blue-color {
+  color: rgb(0, 15, 245);
+}
+
+.sky-text-grey-color {
+  color: rgb(77, 77, 77);
+}
+
+
+
+/* Breakpoints */
+@media (max-width: 457px) { /* x-small */ }
+@media (min-width: 458px) and (max-width: 768px) { /* small */ }
+@media (min-width: 769px) and (max-width: 1024px) { /* medium */ }
+@media (min-width: 1025px) and (max-width: 1440px) { /* large */ }
+@media (min-width: 1441px) and (max-width: 1920px) { /* x-large */ }
+@media (min-width: 1921px) { /* 2x-large */ }
+
+/* Typography Responsive */
+.large-display {
+  font-family: 'Sky', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+@media (min-width: 1441px) {
+  .large-display { font-size: 80px; line-height: 104px; }
+}
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .large-display { font-size: 64px; line-height: 82px; }
+}
+@media (max-width: 1024px) {
+  .large-display { font-size: 48px; line-height: 62px; }
+}
+
+.display {
+  font-family: 'Sky', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+@media (min-width: 1441px) {
+  .display { font-size: 64px; line-height: 84px; }
+}
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .display { font-size: 48px; line-height: 62px; }
+}
+@media (max-width: 1024px) {
+  .display { font-size: 34px; line-height: 44px; }
+}
+
+.page-title {
+  font-family: 'Sky', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+@media (min-width: 1441px) {
+  .page-title { font-size: 52px; line-height: 68px; }
+}
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .page-title { font-size: 42px; line-height: 54px; }
+}
+@media (max-width: 1024px) {
+  .page-title { font-size: 28px; line-height: 36px; }
+}
+
+.section-title {
+  font-family: 'Sky', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+@media (min-width: 1441px) {
+  .section-title { font-size: 38px; line-height: 50px; }
+}
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .section-title { font-size: 30px; line-height: 40px; }
+}
+@media (max-width: 1024px) {
+  .section-title { font-size: 24px; line-height: 32px; }
+}
+
+.body-large, .body-fluid, .body, .body-small, .small-text {
+  font-family: 'Sky', sans-serif;
+  font-weight: 400;
+  letter-spacing: 0px;
+}
+@media (min-width: 1441px) {
+  .body-large { font-size: 26px; line-height: 34px; }
+  .body-fluid { font-size: 18px; line-height: 24px; }
+}
+@media (max-width: 1440px) and (min-width: 1025px) {
+  .body-large { font-size: 24px; line-height: 32px; }
+  .body-fluid { font-size: 16px; line-height: 20px; }
+}
+@media (max-width: 1024px) {
+  .body-large { font-size: 20px; line-height: 26px; }
+  .body-fluid { font-size: 14px; line-height: 18px; }
+}
+
+.body {
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.body-small {
+  font-size: 16px;
+  line-height: 20px;
+}
+
+.small-text {
+  font-size: 14px;
+  line-height: 18px;
+}
