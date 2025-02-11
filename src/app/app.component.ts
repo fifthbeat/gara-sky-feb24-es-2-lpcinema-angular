@@ -3,11 +3,12 @@ import { Component } from '@angular/core';
 import { ContentStackService } from './services/content-stack.service';
 import { HeaderComponent } from "./components/header/header.component";
 import { StackEntry } from './models/stack-entry';
+import { FooterComponent } from './components/footer/footer.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, HeaderComponent],
+  imports: [CommonModule, HeaderComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
