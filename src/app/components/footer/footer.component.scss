@@ -37,17 +37,26 @@ a {
 
 .credits {
   display: flex;
-  // gap: 3rem;
-  flex-basis: 450px;
+  flex-basis: 442px;
   flex-grow: 1;
   flex-wrap: wrap;
 }
 
 .side-nav {
-  flex-basis: 280px;
+  flex-basis: 470px;
   flex-grow: 1;
-  flex-shrink: 0;
   div {
     margin-bottom: 12px;
   }
+}
+
+.line {
+  height: 4px;
+  width: 100%;
+  background: -webkit-gradient(linear, left top, right top, from(#ff9e00), color-stop(30.93%, red), color-stop(61.67%, #b5007d), color-stop(88.09%, #21429c), to(#0071ff));
+  background: linear-gradient(90deg, #ff9e00, red 30.93%, #b5007d 61.67%, #21429c 88.09%, #0071ff);
+}
+.sticky-space {
+  height: 400px;
+  width: 100%;
 }
