@@ -1,8 +1,11 @@
 <!-- <pre> {{data() | json}} </pre> -->
-<div class="full-width mb-5">
+<section class="full-width mb-5" role="complementary" [attr.aria-label]="data().title">
   <picture>
-    <source [srcset]="data().image_desktop.url" media="(min-width:1024px)" type="image/jpeg">
-    <source [srcset]="data().image_mobile.url" media="(min-width:0px)" type="image/jpeg">
-    <img [src]="data().image_mobile.url" [alt]="data().alt || 'Banner image'" role="img" aria-label="Banner image">
+    <source [srcset]="data().image_desktop.url" media="(min-width:1024px)" [type]="data().image_desktop.content_type">
+    <source [srcset]="data().image_mobile.url" media="(min-width:0px)" [type]="data().image_mobile.content_type">
+    <img [src]="data().image_mobile.url"
+         [alt]="data().alt || 'Banner image'"
+         role="img"
+         [attr.aria-label]="data().title">
   </picture>
-</div>
+</section>

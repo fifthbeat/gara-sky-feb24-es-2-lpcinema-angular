@@ -1,14 +1,16 @@
 <!-- <pre> {{data() | json}} </pre> -->
 
-<div class="d-flex justify-content-center mb-5">
+<section class="d-flex justify-content-center mb-5" role="region" [attr.aria-label]="data().title">
   <div class="accordion-container">
     @for (element of data().list; track element.item.title) {
-      <div ngbAccordion>
+      <div ngbAccordion role="presentation">
         <div ngbAccordionItem>
           <h2 ngbAccordionHeader>
-            <button ngbAccordionButton class="body">{{element.item.title}}</button>
+            <button ngbAccordionButton class="body" aria-expanded="false">
+              {{element.item.title}}
+            </button>
           </h2>
-          <div ngbAccordionCollapse>
+          <div ngbAccordionCollapse role="region" [attr.aria-label]="element.item.title + ' content'">
             <div ngbAccordionBody [innerHtml]="element.item.description">
             </div>
           </div>
@@ -16,4 +18,4 @@
       </div>
     }
   </div>
-</div>
+</section>
