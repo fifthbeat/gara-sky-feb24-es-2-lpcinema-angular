@@ -1,13 +1,43 @@
-export const addTextStyle = (color?: string, size?: string) => {
+import { TextStyle } from "../models/stack-entry";
+
+export const addTextStyle = (styles: TextStyle[]) => {
+
   let classObject: Record<string, boolean> = {};
-  if (color === 'dark') {
-    classObject['text-black'] = true;
+
+  let style = styles[0];
+
+  if (!style) return classObject
+
+  switch (style.color) {
+    case 'dark':
+      classObject['sky-text-grey-color'] = true;
+      break;
+    case 'brand':
+      classObject['sky-text-gradient-color'] = true;
+      break;
   }
-  if (color === 'brand') {
-    classObject['sky-text-gradient-color'] = true;
+
+  switch (style.tag) {
+    case 'h1':
+      classObject['display'] = true;
+      break;
+    case 'h2':
+      classObject['page-title'] = true;
+      break;
+    case 'h3':
+    case 'h4':
+      classObject['section-title'] = true;
+      break;
+    case 'h5':
+      classObject['body-large'] = true;
+      break;
   }
-  if (size === 'h2') {
-    classObject['display'] = true;
+
+
+  switch (style.size) {
+    case 'md':
+      classObject['body-large'] = true;
+      break;
   }
 
   return classObject;
