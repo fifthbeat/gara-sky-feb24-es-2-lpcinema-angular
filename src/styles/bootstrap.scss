@@ -51,3 +51,21 @@ $accordion-button-active-icon:  url("data:image/svg+xml,<svg xmlns='http://www.w
 .accordion-button:not(.collapsed) {
   box-shadow: none;
 }
+
+
+.mb-sky {
+  margin-bottom: 5rem; // base (xs)
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 5.5rem;
+  }
+  @include media-breakpoint-up(md) {
+    margin-bottom: 6rem;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 6.5rem;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 7.5rem;
+  }
+}
