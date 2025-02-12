@@ -1,32 +1,38 @@
-<pre> {{data() | json}} </pre>
+<!-- <pre> {{data() | json}} </pre> -->
 
-<section id="hero-cta" class="mb-5 mt-5">
+<section id="hero-cta" class="mb-5 mt-5" role="region" aria-labelledby="hero-title">
   <div class="d-flex flex-column align-items-center">
-    <div class="sky-badge text-center fw-medium">{{ data().badge }}</div>
+    <div class="sky-badge text-center fw-medium" role="text">{{ data().badge }}</div>
 
     <div class="hero">
-      <h1 [ngClass]="addTextStyle(data().group[0].title.style)" class="fw-medium text-center">
+      <h1 [ngClass]="addTextStyle(data().group[0].title.style)"
+          class="fw-medium text-center"
+          id="hero-title">
         {{ data().group[0].title.title }}
       </h1>
-      <p class="sky-text-grey-color text-center body-large text-center">
+      <p class="sky-text-grey-color text-center body-large text-center" role="complementary">
         {{ data().group[0].description[0].content }}
       </p>
 
-      <app-price [price]="data().price" [info]="data().info"></app-price>
+      <app-price [price]="data().price" [info]="data().info" aria-label="Price information"></app-price>
 
-      <div class="d-flex flex-wrap gap-3 justify-content-center mt-4 w-100">
+      <nav class="d-flex flex-wrap gap-3 justify-content-center mt-4 w-100" role="navigation">
         @for (cta of data().ctas; track cta.button.label) {
           @switch (cta.button.action) {
             @case ('link') {
-            <a [href]="cta.button.link.href" [title]="cta.button.link.title" class="btn cta"
-            target="_blank" rel="noopener noreferrer"
-            [ngClass]="{'btn-outline-primary' : cta.button.variant === 'secondary', 'btn-primary' : cta.button.variant === 'primary'}">
+            <a [href]="cta.button.link.href"
+               [attr.aria-label]="cta.button.label"
+               [title]="cta.button.link.title"
+               class="btn cta"
+               target="_blank"
+               rel="noopener noreferrer"
+               [ngClass]="{'btn-outline-primary' : cta.button.variant === 'secondary', 'btn-primary' : cta.button.variant === 'primary'}">
               {{ cta.button.label }}
             </a>
             }
           }
         }
-      </div>
+      </nav>
     </div>
   </div>
 </section>
