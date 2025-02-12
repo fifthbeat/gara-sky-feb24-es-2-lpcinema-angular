@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { CardOffer } from '../../../models/stack-entry';
 
 @Component({
   selector: 'app-hero-card',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './hero-card.component.scss'
 })
 export class HeroCardComponent {
+
+  data = input.required<CardOffer>();
 
 }

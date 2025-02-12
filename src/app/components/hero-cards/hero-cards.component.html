@@ -1,1 +1,10 @@
-<pre> {{data() | json}} </pre>
+<!-- <pre> {{data() | json}} </pre> -->
+<section class="pb-5 d-flex justify-content-center" role="region" aria-label="Movie offers">
+  <div class="row row-cols-1 row-cols-lg-3 g-4 mw1240">
+    @for (card of data().list; track card.card_offer.title) {
+    <div class="col">
+      <app-hero-card [data]="card.card_offer" role="article"></app-hero-card>
+    </div>
+    }
+  </div>
+</section>
