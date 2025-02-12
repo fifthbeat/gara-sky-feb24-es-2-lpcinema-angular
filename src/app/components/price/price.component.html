@@ -1,18 +1,19 @@
 <div class="d-flex flex-column">
-  <div aria-label="24,90€ al mese per 18 mesi" class="d-flex align-items-center">
+
+  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" class="d-flex align-items-center">
     <!-- integerPart -->
-    <div aria-hidden="true" class="large-display  sky-text-gradient-color">{{ price | splitPrice: 'integerPart' }}</div>
+    <div aria-hidden="true" class="large-display  sky-text-gradient-color">{{ price().value | splitPrice: 'integerPart' }}</div>
 
     <div aria-hidden="true">
       <!-- decimalPart -->
-      <div class="page-title  sky-text-gradient-color">,{{ price | splitPrice: 'decimalPart' }}€</div>
+      <div class="page-title  sky-text-gradient-color">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
       <!-- textPrice -->
-      <div class="body-small" *ngIf="textPrice">{{ textPrice }}</div>
+      <div class="body-small" *ngIf="price().label">{{ price().label }}</div>
     </div>
 
   </div>
 
-  <div class="body-small fw-medium">nessun costo di attivazione</div>
+  <div class="body-small fw-medium">{{ price().info }}</div>
   <div class="body-small text-center">Dettaglio dell'offerta</div>
 
 </div>

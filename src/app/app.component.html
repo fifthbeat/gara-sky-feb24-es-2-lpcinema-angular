@@ -5,9 +5,7 @@
       @switch (dynamic._content_type_uid) {
         @case ('hero') {
           @if(isHeroCta(dynamic)) {
-            <!-- [data]="dynamic" -->
-            <app-hero-cta
-            ></app-hero-cta>
+            <app-hero-cta [data]="dynamic"></app-hero-cta>
           }
         }
         @case ('separator') {

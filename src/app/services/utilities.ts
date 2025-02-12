@@ -19,7 +19,7 @@ export const addTextStyle = (styles: TextStyle[]) => {
 
   switch (style.tag) {
     case 'h1':
-      classObject['display'] = true;
+      classObject['large-display'] = true;
       break;
     case 'h2':
       classObject['page-title'] = true;
