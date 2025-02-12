@@ -2,7 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { ContentStackService } from './services/content-stack.service';
 import { HeaderComponent } from "./components/header/header.component";
-import { StackEntry } from './models/stack-entry';
+import { AccordionGroup, BannerDiscount, BaseEntry, CardList, Carousel, HeadingEditorial, Hero, Separator, StackEntry } from './models/stack-entry';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeroCtaComponent } from "./components/hero-cta/hero-cta.component";
 import { Banner3ImagesComponent } from "./components/banner-3-images/banner-3-images.component";
@@ -25,7 +25,35 @@ export class AppComponent {
 
   constructor(readonly contentStackService: ContentStackService) {
     this.contentStackService.fetchLandingPages().subscribe(entries => {
-      this.stack = entries[0] as StackEntry;
+      this.stack = entries[0][0] as StackEntry;
     })
+  }
+
+  isHeadingEditorial(dynamic: BaseEntry): dynamic is HeadingEditorial {
+    return dynamic._content_type_uid === 'heading_editorial';
+  }
+
+  isHeroCta(dynamic: BaseEntry): dynamic is Hero {
+    return dynamic._content_type_uid === 'hero';
+  }
+
+  isBanner3Images(dynamic: BaseEntry): dynamic is Separator {
+    return dynamic._content_type_uid === 'separator';
+  }
+
+  isCarousel(dynamic: BaseEntry): dynamic is Carousel {
+    return dynamic._content_type_uid === 'carousel';
+  }
+
+  isOfferBox(dynamic: BaseEntry): dynamic is BannerDiscount {
+    return dynamic._content_type_uid === 'banner_discount';
+  }
+
+  isHeroCards(dynamic: BaseEntry): dynamic is CardList {
+    return dynamic._content_type_uid === 'card_list';
+  }
+
+  isAccordion(dynamic: BaseEntry): dynamic is AccordionGroup {
+    return dynamic._content_type_uid === 'accordion_group';
   }
 }

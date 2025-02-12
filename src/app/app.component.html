@@ -1,15 +1,50 @@
 <div class="app">
   <app-header></app-header>
   <main class="container-fluid">
-    <app-hero-cta></app-hero-cta>
-    <app-banner-3-images></app-banner-3-images>
-    <app-title></app-title>
-    <app-carousel></app-carousel>
-    <app-title></app-title>
-    <app-offer-box></app-offer-box>
-    <app-hero-cards></app-hero-cards>
-    <app-accordion></app-accordion>
+    @for (dynamic of stack?.dynamic; track dynamic.uid) {
+      @switch (dynamic._content_type_uid) {
+        @case ('hero') {
+          @if(isHeroCta(dynamic)) {
+            <!-- [data]="dynamic" -->
+            <app-hero-cta
+            ></app-hero-cta>
+          }
+        }
+        @case ('banner_3_images') {
+          @if(isBanner3Images(dynamic)) {
+            <app-banner-3-images [data]="dynamic"></app-banner-3-images>
+          }
+        }
+        @case ('heading_editorial') {
+          @if(isHeadingEditorial(dynamic)) {
+            <app-title [data]="dynamic"></app-title>
+          }
+        }
+        @case ('carousel') {
+          @if(isCarousel(dynamic)) {
+          <app-carousel [data]="dynamic"></app-carousel>
+          }
+        }
+        @case ('banner_discount') {
+          @if(isOfferBox(dynamic)) {
+          <app-offer-box [data]="dynamic"></app-offer-box>
+          }
+        }
+        @case ('card_list') {
+          @if(isHeroCards(dynamic)) {
+          <app-hero-cards [data]="dynamic"></app-hero-cards>
+          }
+        }
+        @case ('accordion_group') {
+          @if(isAccordion(dynamic)) {
+          <app-accordion [data]="dynamic"></app-accordion>
+          }
+        }
+        @default {
+        }
+      }
+    }
   </main>
   <app-footer></app-footer>
 </div>
-<pre>{{stack | json}}</pre>
+<!-- <pre>{{stack | json}}</pre> -->
