@@ -1,1 +1,19 @@
-<pre> {{data() | json}} </pre>
+<!-- <pre> {{data() | json}} </pre> -->
+
+<div class="d-flex justify-content-center mb-5">
+  <div class="accordion-container">
+    @for (element of data().list; track element.item.title) {
+      <div ngbAccordion>
+        <div ngbAccordionItem>
+          <h2 ngbAccordionHeader>
+            <button ngbAccordionButton class="body">{{element.item.title}}</button>
+          </h2>
+          <div ngbAccordionCollapse>
+            <div ngbAccordionBody [innerHtml]="element.item.description">
+            </div>
+          </div>
+        </div>
+      </div>
+    }
+  </div>
+</div>

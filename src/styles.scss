@@ -1,4 +1,4 @@
-/* You can add global styles to this file, and also import other style files */
+/* FONTS */
 @font-face {
   font-family: 'Sky';
   src: url('/fonts/Sky_Reg.ttf') format('truetype');
@@ -48,7 +48,16 @@ body {
 }
 
 
-// SKY TEXT COLOR
+// TEXT COLOR
+
+$colors: (
+  'dark': rgb(77, 77, 77),
+  'blue': rgb(0, 15, 245),
+);
+
+@function get-color($name) {
+  @return map-get($colors, $name);
+}
 
 .sky-text-gradient-color {
   background-clip: text;
@@ -62,11 +71,11 @@ body {
 }
 
 .sky-text-blue-color {
-  color: rgb(0, 15, 245);
+  color: get-color('blue');
 }
 
 .sky-text-grey-color {
-  color: rgb(77, 77, 77);
+  color: get-color('dark');
 }
 
 
