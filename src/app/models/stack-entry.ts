@@ -137,8 +137,8 @@ export interface Hero extends BaseEntry {
 
 export interface Separator extends BaseEntry {
   alt: string;
-  image_desktop: ImageData;
-  image_mobile: ImageData;
+  image_desktop: FileData;
+  image_mobile: FileData;
   title: string;
 }
 

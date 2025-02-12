@@ -1,1 +1,8 @@
-<pre> {{data() | json}} </pre>
+<!-- <pre> {{data() | json}} </pre> -->
+<div class="full-width mb-5">
+  <picture>
+    <source [srcset]="data().image_desktop.url" media="(min-width:1024px)" type="image/jpeg">
+    <source [srcset]="data().image_mobile.url" media="(min-width:0px)" type="image/jpeg">
+    <img [src]="data().image_mobile.url" [alt]="data().alt || 'Banner image'" role="img" aria-label="Banner image">
+  </picture>
+</div>

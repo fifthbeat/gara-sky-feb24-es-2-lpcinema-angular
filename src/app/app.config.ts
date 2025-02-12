@@ -1,4 +1,5 @@
 import { ApplicationConfig, InjectionToken, provideZoneChangeDetection } from '@angular/core';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
@@ -30,6 +31,7 @@ export const appConfig: ApplicationConfig = {
   providers: [
     { provide: CONTENTSTACK_CONFIG, useValue: contentstackConfig },
     provideZoneChangeDetection({ eventCoalescing: true }),
+    provideAnimationsAsync(),
     // provideStore({ landingPages: landingPageReducer }),
     // provideEffects([LandingPageEffects]),
     // provideStoreDevtools({ maxAge: 25 })
