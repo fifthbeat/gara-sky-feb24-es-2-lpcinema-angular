@@ -1,19 +1,29 @@
-<div class="d-flex flex-column">
 
-  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" class="d-flex align-items-center">
+<ng-template #content let-modal>
+  @if (info()) {
+    <div class="modal-header">
+      <h4 class="modal-title" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+    </div>
+    <div class="modal-body">
+      <div [innerHTML]="info()?.modal?.[0]?.content"></div>
+    </div>
+  }
+</ng-template>
+
+<div class="d-flex flex-column align-items-center">
+  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" class="d-flex sky-text-gradient-color align-items-start">
     <!-- integerPart -->
-    <div aria-hidden="true" class="large-display  sky-text-gradient-color">{{ price().value | splitPrice: 'integerPart' }}</div>
-
+    <div aria-hidden="true" class="integer">{{ price().value | splitPrice: 'integerPart' }}</div>
     <div aria-hidden="true">
       <!-- decimalPart -->
-      <div class="page-title  sky-text-gradient-color">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
+      <div class="decimal">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
       <!-- textPrice -->
-      <div class="body-small" *ngIf="price().label">{{ price().label }}</div>
+      <div class="reset-bg" *ngIf="price().label">{{ price().label }}</div>
     </div>
-
   </div>
-
-  <div class="body-small fw-medium">{{ price().info }}</div>
-  <div class="body-small text-center">Dettaglio dell'offerta</div>
-
+  <div class="body-small">{{ price().info }}</div>
+  @if (info()) {
+    <button class="btn body-small fw-medium sky-text-blue-color" (click)="open(content)">{{info()?.label}} <img src="/icons/info.svg" alt="Info Icon" /></button>
+  }
 </div>

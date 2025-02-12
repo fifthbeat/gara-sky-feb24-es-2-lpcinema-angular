@@ -1,20 +1,32 @@
-<section id="hero-cta">
+<pre> {{data() | json}} </pre>
+
+<section id="hero-cta" class="mb-5 mt-5">
   <div class="d-flex flex-column align-items-center">
     <div class="sky-badge text-center fw-medium">{{ data().badge }}</div>
 
-    <div class="hero text-center">
-      <h1 [ngClass]="addTextStyle(data().group[0].title.style)">
+    <div class="hero">
+      <h1 [ngClass]="addTextStyle(data().group[0].title.style)" class="fw-medium text-center">
         {{ data().group[0].title.title }}
       </h1>
-      <p class="sky-text-grey-color text-center body-large">
+      <p class="sky-text-grey-color text-center body-large text-center">
         {{ data().group[0].description[0].content }}
       </p>
-    </div>
 
-    <div class="hero">
-      <app-price [price]="data().price"
-      ></app-price>
+      <app-price [price]="data().price" [info]="data().info"></app-price>
+
+      <div class="d-flex flex-wrap gap-3 justify-content-center mt-4 w-100">
+        @for (cta of data().ctas; track cta.button.label) {
+          @switch (cta.button.action) {
+            @case ('link') {
+            <a [href]="cta.button.link.href" [title]="cta.button.link.title" class="btn cta"
+            target="_blank" rel="noopener noreferrer"
+            [ngClass]="{'btn-outline-primary' : cta.button.variant === 'secondary', 'btn-primary' : cta.button.variant === 'primary'}">
+              {{ cta.button.label }}
+            </a>
+            }
+          }
+        }
+      </div>
     </div>
   </div>
 </section>
-

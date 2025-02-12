@@ -1,0 +1,17 @@
+@import '../../../styles.scss';
+
+.reset-bg {
+  background-clip: text;
+  background-color: get-color('dark');
+  -webkit-text-fill-color: transparent;
+}
+
+.integer {
+  font-size: 70px;
+  line-height: 62px;
+}
+
+.decimal {
+  font-size: 30px;
+  line-height: 38px;
+}

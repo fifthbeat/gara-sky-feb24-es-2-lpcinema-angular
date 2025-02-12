@@ -1,7 +1,8 @@
-import {Component, input, Input} from '@angular/core';
+import {Component, inject, input, Input, TemplateRef} from '@angular/core';
 import {SplitPricePipe} from '../../pipe/split-price.pipe';
 import {CommonModule} from '@angular/common';
-import {Hero, Price} from '../../models/stack-entry';
+import {Hero, Info, Price} from '../../models/stack-entry';
+import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-price',
@@ -15,7 +16,9 @@ import {Hero, Price} from '../../models/stack-entry';
 })
 export class PriceComponent {
 
+	private modalService = inject(NgbModal);
   price = input.required<Price>();
+  info = input<Info>();
 
   constructor() {
   }
@@ -23,4 +26,15 @@ export class PriceComponent {
   makeAriaLabel(param: (any)[]) {
     return param.join(' ');
   }
+
+	open(content: TemplateRef<any>) {
+		this.modalService.open(content, { ariaLabelledBy: 'info-modal' }).result.then(
+			(result) => {
+				// this.closeResult.set(`Closed with: ${result}`);
+			},
+			(reason) => {
+				// this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
+			},
+		);
+	}
 }
