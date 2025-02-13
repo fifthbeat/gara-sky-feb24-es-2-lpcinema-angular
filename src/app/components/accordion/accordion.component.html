@@ -1,7 +1,7 @@
 <!-- <pre> {{data() | json}} </pre> -->
 
 <section class="d-flex justify-content-center mb-sky" role="region" [attr.aria-label]="data().title">
-  <div class="accordion-container">
+  <div class="accordion-container mw800">
     @for (element of data().list; track element.item.title) {
       <div ngbAccordion role="presentation">
         <div ngbAccordionItem>
