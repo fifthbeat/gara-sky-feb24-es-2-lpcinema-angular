@@ -1,8 +1,8 @@
-import {Component, inject, input, Input, TemplateRef} from '@angular/core';
-import {SplitPricePipe} from '../../pipe/split-price.pipe';
+import {Component, inject, input, TemplateRef} from '@angular/core';
+import {SplitPricePipe} from '../../pipes/split-price.pipe';
 import {CommonModule} from '@angular/common';
-import {Hero, Info, Price} from '../../models/stack-entry';
-import { NgbModal, NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import {Info, Price} from '../../models/stack-entry';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-price',
