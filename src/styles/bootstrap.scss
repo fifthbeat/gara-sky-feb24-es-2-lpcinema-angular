@@ -24,6 +24,8 @@ $btn-font-weight: 500;
 $btn-font-size: 18px;
 $btn-border-width: 2px;
 
+$modal-header-border-width: 0px;
+
 @import "bootstrap/scss/maps";
 @import "bootstrap/scss/mixins";
 @import "bootstrap/scss/root";
@@ -62,6 +64,15 @@ $btn-border-width: 2px;
 
 .btn.cta {
   width: 230px;
+}
+
+.modal-content {
+  padding: 5vw;
+}
+
+.btn-close:focus {
+  outline: none;
+  box-shadow: none;
 }
 
 .mb-sky {

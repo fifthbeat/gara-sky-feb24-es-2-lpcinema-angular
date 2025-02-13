@@ -28,13 +28,6 @@ export class PriceComponent {
   }
 
 	open(content: TemplateRef<any>) {
-		this.modalService.open(content, { ariaLabelledBy: 'info-modal' }).result.then(
-			(result) => {
-				// this.closeResult.set(`Closed with: ${result}`);
-			},
-			(reason) => {
-				// this.closeResult.set(`Dismissed ${this.getDismissReason(reason)}`);
-			},
-		);
+		this.modalService.open(content, { size: 'xl', ariaLabelledBy: 'info-modal' });
 	}
 }

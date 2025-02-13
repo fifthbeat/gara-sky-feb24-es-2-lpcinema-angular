@@ -2,10 +2,10 @@
 <ng-template #content let-modal>
   @if (info()) {
     <div class="modal-header">
-      <h4 class="modal-title" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
-      <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="border border-2 btn-close p-3" aria-label="Close" (click)="modal.dismiss()"></button>
     </div>
     <div class="modal-body">
+      <h4 class="body-large fw-medium mb-4" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
       <div [innerHTML]="info()?.modal?.[0]?.content"></div>
     </div>
   }
