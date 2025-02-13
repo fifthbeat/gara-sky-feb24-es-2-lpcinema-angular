@@ -1,0 +1,43 @@
+swiper-container {
+  margin-left: 15%;
+  margin-right: -15px;
+}
+
+h3 {
+  margin-left: 15%;
+}
+
+.card {
+  height: 300px;
+  img.card-img-top {
+    height: 210px;
+    object-fit: cover;
+    flex: 0 0 210px;
+  }
+  img.thumb {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+  }
+  .separator {
+    height: 25px;
+    width: 1px;
+    background-color: gainsboro;
+  }
+}
+
+.controls {
+  margin-right: 15%;
+  button {
+    span {
+      display: block;
+    }
+    box-shadow: rgba(0, 0, 0, 0.07) 0px 8px 24px 0px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .controls {
+    display: none!important;
+  }
+}

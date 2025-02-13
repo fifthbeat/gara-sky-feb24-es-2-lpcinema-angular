@@ -1,1 +1,37 @@
-<pre> {{data() | json}} </pre>
+<!-- <pre> {{data() | json}} </pre> -->
+<section class="w-100 mb-sky" role="region" [attr.aria-label]="data().title">
+  <div class="heading d-flex justify-content-between align-items-center mb-3 w-100">
+    <h3 class="section-title fw-medium" id="carousel-title">{{data().title_slider}}</h3>
+    <div class="controls d-flex gap-2" role="group" aria-label="Carousel controls">
+      <button type="button" class="border border-2 border-light btn p-2" aria-label="Previous slide" (click)="prevSlide()" [ngClass]="setControlClasses('prev')">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="border border-2 border-light btn p-2" aria-label="Next slide" (click)="nextSlide()" [ngClass]="setControlClasses('next')">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <swiper-container init="false" aria-labelledby="carousel-title">
+    @for (slide of data().list; track slide.card_thumb.title) {
+    <swiper-slide role="group" aria-roledescription="slide">
+      <div class="card">
+        <img [src]="slide.card_thumb.image.file.url"
+             [alt]="slide.card_thumb.image.alt"
+             class="card-img-top"
+             loading="lazy" />
+        <div class="card-body p-3 d-flex flex-column justify-content-around gap-2">
+          <h4 class="body fw-medium text-decoration-underline">{{slide.card_thumb.title}}</h4>
+          <div class="d-flex align-items-center gap-3">
+            <img [src]="slide.card_thumb.thumb.file.url"
+                 [alt]="slide.card_thumb.thumb.alt"
+                 class="thumb"
+                 loading="lazy" />
+            <div class="separator" aria-hidden="true"></div>
+            <small class="fw-medium sky-text-grey-color text-uppercase">{{slide.card_thumb.description}}</small>
+          </div>
+        </div>
+      </div>
+    </swiper-slide>
+    }
+  </swiper-container>
+</section>
