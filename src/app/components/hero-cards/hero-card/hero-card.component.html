@@ -2,12 +2,12 @@
   <img [src]="data().image.file.url"
        [alt]="data().image.alt"
        class="card-img-top"
-       [attr.aria-describedby]="'desc-' + data().title" />
+       [attr.aria-describedby]="'desc-' + data().title"  loading="lazy"/>
 
   <img [src]="data().thumb_image.file.url"
        [alt]="data().thumb_image.alt"
        class="thumb"
-       [attr.aria-describedby]="'desc-' + data().thumb_image.alt" />
+       [attr.aria-describedby]="'desc-' + data().thumb_image.alt"  loading="lazy"/>
 
   <div class="card-body">
     <h5 class="body-large text-center mb-3 mt-4 fw-medium"

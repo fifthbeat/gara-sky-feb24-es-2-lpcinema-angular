@@ -57,6 +57,19 @@ a {
   background: linear-gradient(90deg, #ff9e00, red 30.93%, #b5007d 61.67%, #21429c 88.09%, #0071ff);
 }
 .sticky-space {
-  height: 400px;
+  height: 118px;
+  min-height: 118px;
   width: 100%;
+}
+
+.sky-logo-container {
+  flex: 1 0 73px;
+}
+
+.footer-nav-wrapper {
+  min-height: 400px; /* adjust based on your content */
+}
+
+.second-footer {
+  min-height: 100px; /* adjust based on your content */
 }

@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { HeadingEditorial } from '../../models/stack-entry';
 import { CommonModule } from '@angular/common';
-import { addTextStyle } from '../../services/utilities';
+import { addTextStyle, stripHtmlTags } from '../../services/utilities';
 
 @Component({
   selector: 'app-title',
@@ -15,5 +15,6 @@ export class TitleComponent {
   data = input.required<HeadingEditorial>();
 
   addTextStyle = addTextStyle;
+  stripHtmlTags = stripHtmlTags;
 
 }

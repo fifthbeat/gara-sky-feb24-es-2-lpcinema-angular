@@ -25,6 +25,6 @@
     <h2 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h2>
     }
     }
-    <p [ngClass]="addTextStyle(data().text.style)" [innerHTML]="data().text.content" tabindex="0"></p>
+    <p [ngClass]="addTextStyle(data().text.style)" [innerHTML]="stripHtmlTags(data().text.content)" tabindex="0"></p>
   </div>
 </section>

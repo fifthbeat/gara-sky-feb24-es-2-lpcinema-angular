@@ -42,3 +42,13 @@ export const addTextStyle = (styles: TextStyle[]) => {
 
   return classObject;
 }
+
+
+export const stripHtmlTags = (html: string): string => {
+  return html.replace(/<[^>]*>/g, ''); // Removes all HTML tags
+}
+
+export const stripPTags = (html: string): string => {
+  return html.replace(/<\/?p[^>]*>/g, ''); // Removes <p> and </p> tags
+}
+

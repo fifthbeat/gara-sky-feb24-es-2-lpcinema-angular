@@ -1,3 +1,11 @@
+@import './styles/bootstrap.scss';
+
+:root {
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}
+
 /* FONTS */
 @font-face {
   font-family: 'Sky';
@@ -45,19 +53,6 @@
 body {
   font-family: 'Sky', sans-serif;
   color: rgb(77, 77, 77);
-}
-
-
-// TEXT COLOR
-
-$colors: (
-  'dark': rgb(77, 77, 77),
-  'blue': rgb(0, 15, 245),
-  'light-gray': #fafafa,
-);
-
-@function get-color($name) {
-  @return map-get($colors, $name);
 }
 
 .sky-text-gradient-color {
@@ -197,4 +192,76 @@ pre {
   border: 3px solid green;
   padding: 10px;
   margin-right: 190px;
+}
+
+
+.container .full-width, .container-fluid .full-width {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+
+.accordion-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.accordion-button:not(.collapsed) {
+  box-shadow: none;
+}
+
+.btn.cta {
+  width: 230px;
+}
+
+.modal-content {
+  padding: 5vw;
+}
+
+.btn-close:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.reset-bg {
+  background-clip: text;
+  background-color: get-color('dark');
+  -webkit-text-fill-color: transparent;
+}
+
+.mb-sky {
+  margin-bottom: 5rem; // base (xs)
+
+  @include media-breakpoint-up(sm) {
+    margin-bottom: 5.5rem;
+  }
+  @include media-breakpoint-up(md) {
+    margin-bottom: 6rem;
+  }
+  @include media-breakpoint-up(lg) {
+    margin-bottom: 6.5rem;
+  }
+  @include media-breakpoint-up(xl) {
+    margin-bottom: 7.5rem;
+  }
+}
+
+.rotate-md {
+  @include media-breakpoint-down(md) {
+    transform: rotate(90deg);
+  }
+}
+
+#sticky.btn.cta {
+  @include media-breakpoint-down(md) {
+    width: 155px;
+    font-size: 16px;
+    padding: 0.3rem;
+  }
+}
+
+#sticky.left-side h4 {
+  @include media-breakpoint-down(md) {
+    font-size: 16px;
+    line-height: 18px;
+  }
 }

@@ -1,47 +1,58 @@
 <div class="app">
   <app-header></app-header>
-  <main class="container-fluid">
-    @for (dynamic of stack?.dynamic; track dynamic.uid) {
-      @switch (dynamic._content_type_uid) {
-        @case ('hero') {
-          @if(isHeroCta(dynamic)) {
-            <app-hero-cta [data]="dynamic"></app-hero-cta>
+  @if (!stack) {
+    <main>
+      <div class="skeleton skeleton-title"></div>
+      <div class="skeleton skeleton-text"></div>
+      <div class="skeleton skeleton-image"></div>
+    </main>
+  } @else {
+    <main class="container-fluid">
+      @for (dynamic of stack.dynamic; track dynamic.uid) {
+        @switch (dynamic._content_type_uid) {
+          @case ('hero') {
+            @if(isHeroCta(dynamic)) {
+              <app-hero-cta [data]="dynamic"></app-hero-cta>
+            }
           }
-        }
-        @case ('separator') {
-          @if(isBanner3Images(dynamic)) {
-            <app-banner-3-images [data]="dynamic"></app-banner-3-images>
+          @case ('separator') {
+            @if(isBanner3Images(dynamic)) {
+              <app-banner-3-images [data]="dynamic"></app-banner-3-images>
+            }
           }
-        }
-        @case ('heading_editorial') {
-          @if(isHeadingEditorial(dynamic)) {
-            <app-title [data]="dynamic"></app-title>
+          @case ('heading_editorial') {
+            @if(isHeadingEditorial(dynamic)) {
+              <app-title [data]="dynamic"></app-title>
+            }
           }
-        }
-        @case ('carousel') {
-          @if(isCarousel(dynamic)) {
-          <app-carousel [data]="dynamic"></app-carousel>
+          @case ('carousel') {
+            @if(isCarousel(dynamic)) {
+            <app-carousel [data]="dynamic"></app-carousel>
+            }
           }
-        }
-        @case ('banner_discount') {
-          @if(isOfferBox(dynamic)) {
-          <app-offer-box [data]="dynamic"></app-offer-box>
+          @case ('banner_discount') {
+            @if(isOfferBox(dynamic)) {
+            <app-offer-box [data]="dynamic"></app-offer-box>
+            }
           }
-        }
-        @case ('card_list') {
-          @if(isHeroCards(dynamic)) {
-          <app-hero-cards [data]="dynamic"></app-hero-cards>
+          @case ('card_list') {
+            @if(isHeroCards(dynamic)) {
+            <app-hero-cards [data]="dynamic"></app-hero-cards>
+            }
           }
-        }
-        @case ('accordion_group') {
-          @if(isAccordion(dynamic)) {
-          <app-accordion [data]="dynamic"></app-accordion>
+          @case ('accordion_group') {
+            @if(isAccordion(dynamic)) {
+            <app-accordion [data]="dynamic"></app-accordion>
+            }
           }
-        }
-        @default {
+          @default {
+          }
         }
       }
-    }
-  </main>
+    </main>
+  }
+  @if(this.sticky && isSticky(this.sticky)) {
+    <app-sticky-offer [data]="this.sticky"></app-sticky-offer>
+  }
   <app-footer></app-footer>
 </div>

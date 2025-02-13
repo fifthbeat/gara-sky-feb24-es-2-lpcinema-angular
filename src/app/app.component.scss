@@ -2,3 +2,37 @@
   position: relative;
   // height: 2000px;
 }
+
+// main {
+//   min-height: 100vh;
+// }
+
+.skeleton {
+  background: #e0e0e0;
+  border-radius: 4px;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-title {
+  width: 50%;
+  height: 20vh;
+  margin: 2rem auto 2rem auto;
+}
+
+.skeleton-text {
+  width: 90%;
+  height: 80vh;
+  margin: 0 auto;
+}
+
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+  50% {
+    background-color: #d6d6d6;
+  }
+  100% {
+    background-color: #e0e0e0;
+  }
+}
