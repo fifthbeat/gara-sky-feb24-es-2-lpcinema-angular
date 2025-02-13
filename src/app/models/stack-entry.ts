@@ -121,7 +121,7 @@ export interface Price {
   label: string;
   line_through: boolean;
   value: number;
-  variant: string;
+  variant?: string;
 }
 
 export interface Hero extends BaseEntry {
@@ -183,16 +183,9 @@ export interface Carousel extends BaseEntry {
 
 // ----------------- BANNER DISCOUNT -----------------
 
-export interface ComparePriceDetail {
-  value: number;
-  label: string;
-  info: string;
-  line_through: boolean;
-}
-
 export interface BannerDiscountCompare {
-  from: ComparePriceDetail;
-  to: ComparePriceDetail;
+  from: Price;
+  to: Price;
 }
 
 export interface BannerDiscount extends BaseEntry {
@@ -238,6 +231,17 @@ export interface AccordionGroupEntry {
 export interface AccordionGroup extends BaseEntry {
   title: string;
   list: AccordionGroupEntry[];
+}
+
+
+// ----------------- STICKY -----------------
+
+export interface Sticky extends BaseEntry {
+  ctas: CTA[];
+  info: Info;
+  price: Price;
+  title: string;
+  title_label: GroupTitle;
 }
 
 

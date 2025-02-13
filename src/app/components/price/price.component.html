@@ -1,31 +1,49 @@
-
 <ng-template #content let-modal>
   @if (info()) {
     <div class="modal-header">
-      <button type="button" class="border border-2 btn-close p-3" aria-label="Close" (click)="modal.dismiss()"></button>
+      <button type="button" class="border border-2 btn-close p-3" aria-label="Close modal" (click)="modal.dismiss()"></button>
     </div>
-    <div class="modal-body">
+    <div class="modal-body" role="dialog" aria-labelledby="info-modal-title">
       <h4 class="body-large fw-medium mb-4" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
-      <div [innerHTML]="info()?.modal?.[0]?.content"></div>
+      <div [innerHTML]="info()?.modal?.[0]?.content" role="article"></div>
     </div>
   }
 </ng-template>
-
-<div class="d-flex flex-column align-items-center">
-  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" id="main-price"
-  [ngClass]="{'sky-text-gradient-color': !price().line_through, 'line-through': price().line_through}"
-  class="d-flex align-items-start">
-    <!-- integerPart -->
-    <div aria-hidden="true" class="integer">{{ price().value | splitPrice: 'integerPart' }}</div>
-    <div aria-hidden="true">
-      <!-- decimalPart -->
-      <div class="decimal">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
-      <!-- textPrice -->
-      <div class="reset-bg" *ngIf="price().label" [innerHtml]="price().label"></div>
+@if (inline()) {
+    <div class="d-flex align-items-end flex-wrap inline">
+      <div role="text" [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')"
+      class="body-large fw-medium">
+        {{ price().value | number : '1.2-2'}}€
+      </div>
+      <div class="body-fluid reset-bg lh-fix" role="text" *ngIf="price().label" [innerHtml]="price().label"></div>
+      @if (info()) {
+        <button class="body-small btn btn-link fw-medium sky-text-blue-color text-decoration-none py-1 px-0"
+                (click)="open(content)"
+                aria-expanded="false">
+          {{info()?.label}}
+          <img class="icon-small" src="/icons/info.svg" alt="" aria-hidden="true" />
+        </button>
+      }
     </div>
+} @else {
+  <div class="d-flex flex-column align-items-center">
+    <div role="text" [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" id="main-price"
+    [ngClass]="{'sky-text-gradient-color': !price().line_through, 'line-through': price().line_through}"
+    class="d-flex align-items-start">
+      <div aria-hidden="true" class="integer">{{ price().value | splitPrice: 'integerPart' }}</div>
+      <div aria-hidden="true">
+        <div class="decimal">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
+        <div class="reset-bg" *ngIf="price().label" [innerHtml]="price().label"></div>
+      </div>
+    </div>
+    <div class="body-small" role="text" [innerHtml]="stripPTags(price().info)"></div>
+    @if (info()) {
+      <button class="body-small btn btn-link fw-medium sky-text-blue-color text-decoration-none"
+              (click)="open(content)"
+              aria-expanded="false">
+        {{info()?.label}}
+        <img src="/icons/info.svg" alt="" aria-hidden="true" />
+      </button>
+    }
   </div>
-  <div class="body-small" [innerHtml]="price().info"></div>
-  @if (info()) {
-    <button class="btn body-small fw-medium sky-text-blue-color" (click)="open(content)">{{info()?.label}} <img src="/icons/info.svg" alt="Info Icon" /></button>
-  }
-</div>
+}

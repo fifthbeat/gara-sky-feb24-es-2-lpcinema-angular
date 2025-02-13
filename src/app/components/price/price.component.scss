@@ -1,11 +1,3 @@
-@import '../../../styles.scss';
-
-.reset-bg {
-  background-clip: text;
-  background-color: get-color('dark');
-  -webkit-text-fill-color: transparent;
-}
-
 .integer {
   font-size: 70px;
   line-height: 62px;
@@ -16,9 +8,22 @@
   line-height: 38px;
 }
 
+.inline {
+  column-gap: 6px;
+}
+
+.lh-fix {
+  line-height: 24px!important;
+}
+
+.icon-small {
+  width: 14px;
+  height: 14px;
+}
+
 #main-price {
  position: relative;
- color: get-color('dark');
+ color: var(--color-dark);
 }
 
 #main-price.line-through::before {
@@ -28,7 +33,7 @@
   left: -18px;
   width: 147px;
   height: 2px;
-  background-color: get-color('dark');
+  background-color: var(--color-dark);
   transform: rotate(-23deg);
   transform-origin: center;
 }
