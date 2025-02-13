@@ -36,6 +36,12 @@ h3 {
   }
 }
 
+@media (max-width: 769px) {
+  swiper-container {
+    margin-left: 0;
+  }
+}
+
 @media (max-width: 1024px) {
   .controls {
     display: none!important;

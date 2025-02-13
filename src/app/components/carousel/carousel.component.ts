@@ -27,7 +27,7 @@ export class CarouselComponent implements AfterViewInit {
       slidesPerView: 1,
       spaceBetween: 30,
       breakpoints: {
-        768: {
+        746: {
           slidesPerView: 2,
         },
         1240: {
