@@ -1,28 +1,30 @@
 <!-- <pre> {{data() | json}} </pre> -->
 
-<section class="text-center mb-5" role="region" [attr.aria-label]="data().title">
-  @switch (data().group.title.style[0].tag) {
-  @case ('h1') {
-  <h1 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h1>
-  }
-  @case ('h2') {
-  <h2 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h2>
-  }
-  @case ('h3') {
-  <h3 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h3>
-  }
-  @case ('h4') {
-  <h4 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h4>
-  }
-  @case ('h5') {
-  <h5 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h5>
-  }
-  @case ('h6') {
-  <h6 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h6>
-  }
-  @default {
-  <h2 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().title}}</h2>
-  }
-  }
-  <p [ngClass]="addTextStyle(data().text.style)" [innerHTML]="data().text.content" tabindex="0"></p>
+<section class="text-center mb-5 d-flex justify-content-center" role="region" [attr.aria-label]="data().title">
+  <div class="mw800">
+    @switch (data().group.title.style[0].tag) {
+    @case ('h1') {
+    <h1 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h1>
+    }
+    @case ('h2') {
+    <h2 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h2>
+    }
+    @case ('h3') {
+    <h3 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h3>
+    }
+    @case ('h4') {
+    <h4 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h4>
+    }
+    @case ('h5') {
+    <h5 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h5>
+    }
+    @case ('h6') {
+    <h6 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h6>
+    }
+    @default {
+    <h2 [ngClass]="addTextStyle(data().group.title.style)" tabindex="0">{{data().group.title.title}}</h2>
+    }
+    }
+    <p [ngClass]="addTextStyle(data().text.style)" [innerHTML]="data().text.content" tabindex="0"></p>
+  </div>
 </section>
