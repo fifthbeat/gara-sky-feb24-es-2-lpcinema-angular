@@ -12,17 +12,19 @@
 </ng-template>
 
 <div class="d-flex flex-column align-items-center">
-  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" class="d-flex sky-text-gradient-color align-items-start">
+  <div [attr.aria-label]="[price().value.toString(), price().label.toString()].join(' ')" id="main-price"
+  [ngClass]="{'sky-text-gradient-color': !price().line_through, 'line-through': price().line_through}"
+  class="d-flex align-items-start">
     <!-- integerPart -->
     <div aria-hidden="true" class="integer">{{ price().value | splitPrice: 'integerPart' }}</div>
     <div aria-hidden="true">
       <!-- decimalPart -->
       <div class="decimal">,{{ price().value | splitPrice: 'decimalPart' }}€</div>
       <!-- textPrice -->
-      <div class="reset-bg" *ngIf="price().label">{{ price().label }}</div>
+      <div class="reset-bg" *ngIf="price().label" [innerHtml]="price().label"></div>
     </div>
   </div>
-  <div class="body-small">{{ price().info }}</div>
+  <div class="body-small" [innerHtml]="price().info"></div>
   @if (info()) {
     <button class="btn body-small fw-medium sky-text-blue-color" (click)="open(content)">{{info()?.label}} <img src="/icons/info.svg" alt="Info Icon" /></button>
   }

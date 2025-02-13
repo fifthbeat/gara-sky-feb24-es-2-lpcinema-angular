@@ -91,3 +91,10 @@ $modal-header-border-width: 0px;
     margin-bottom: 7.5rem;
   }
 }
+
+.rotate-md {
+  @include media-breakpoint-down(md) {
+    transform: rotate(90deg);
+  }
+}
+

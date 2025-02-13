@@ -1,4 +1,15 @@
-<pre> {{data() | json}} </pre>
-<div class="mb-sky">
-
-</div>
+<!-- <pre> {{data() | json}} </pre> -->
+<section class="mb-sky d-flex justify-content-center" role="region" [attr.aria-label]="data().title">
+  <div class="card mw800" role="article">
+    <div class="align-items-center card-body d-flex flex-column flex-md-row justify-content-center p-5">
+      <app-price [price]="data().compare.from"></app-price>
+      <div class="arrow">
+        <svg width="144" height="40" xmlns="http://www.w3.org/2000/svg" class="rotate-md">
+          <line x1="8" y1="20" x2="104" y2="20" stroke="gray" stroke-width="2"/>
+          <polygon points="104,15 116,20 104,25" fill="gray"/>
+        </svg>
+      </div>
+      <app-price [price]="data().compare.to"></app-price>
+    </div>
+  </div>
+</section>
