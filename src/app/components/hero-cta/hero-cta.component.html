@@ -10,9 +10,7 @@
           id="hero-title">
         {{ data().group[0].title.title }}
       </h1>
-      <p class="sky-text-grey-color text-center body-large text-center" role="complementary">
-        {{ data().group[0].description[0].content }}
-      </p>
+      <p class="sky-text-grey-color text-center body-large text-center" role="complementary" [innerHtml]="data().group[0].description[0].content"></p>
 
       <app-price [price]="data().price" [info]="data().info" aria-label="Price information"></app-price>
 
