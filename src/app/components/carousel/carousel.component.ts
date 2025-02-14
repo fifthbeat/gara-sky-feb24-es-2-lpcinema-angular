@@ -42,16 +42,17 @@ export class CarouselComponent implements AfterViewInit {
         2700: {
           slidesPerView: 6,
         },
-      },
-      // on: {
-      //   init() {
-      //     console.log('swiper initialized');
-      //   },
-      // },
+      }
     };
     if (this.swiperEl) {
       Object.assign(this.swiperEl, swiperParams);
       this.swiperEl.initialize();
+      // if (this.swiperEl?.swiper.isBeginning) {
+      //   this.isBeginning.set(true);
+      // }
+      // if (this.swiperEl?.swiper.isEnd) {
+      //   this.isEnd.set(true);
+      // }
     }
   }
 

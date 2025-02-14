@@ -13,6 +13,7 @@
         @switch (cta.button.action) {
           @case ('link') {
           <a [href]="cta.button.link.href"
+              [attr.data-cy]="cta.button.label"
              [attr.aria-label]="cta.button.label"
              [title]="cta.button.link.title"
              class="btn cta"
