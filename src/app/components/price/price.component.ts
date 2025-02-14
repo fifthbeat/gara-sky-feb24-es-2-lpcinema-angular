@@ -24,9 +24,6 @@ export class PriceComponent {
 
   stripPTags = stripPTags;
 
-  constructor() {
-  }
-
   makeAriaLabel(param: (any)[]) {
     return param.join(' ');
   }

@@ -1,4 +1,4 @@
-import { Inject, Injectable, InjectionToken } from '@angular/core';
+import { inject, Inject, Injectable, InjectionToken } from '@angular/core';
 import Contentstack from 'contentstack';
 import { Stack, Config } from 'contentstack';
 import { from, Observable } from 'rxjs';
@@ -10,8 +10,10 @@ import { CONTENTSTACK_CONFIG } from '../app.config';
 export class ContentStackService {
   private stack: Stack;
 
-  constructor(@Inject(CONTENTSTACK_CONFIG) private config: Config) {
-    this.stack = Contentstack.Stack(config);
+  config = inject(CONTENTSTACK_CONFIG) as Config;
+
+  constructor() {
+    this.stack = Contentstack.Stack(this.config);
   }
 
   fetchLandingPages(): Observable<any> {

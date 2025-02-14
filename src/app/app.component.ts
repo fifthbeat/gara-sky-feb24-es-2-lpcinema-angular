@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ContentStackService } from './services/content-stack.service';
 import { HeaderComponent } from "./components/header/header.component";
 import { AccordionGroup, BannerDiscount, BaseEntry, CardList, Carousel, HeadingEditorial, Hero, Separator, StackEntry, Sticky } from './models/stack-entry';
@@ -12,6 +12,11 @@ import { OfferBoxComponent } from "./components/offer-box/offer-box.component";
 import { HeroCardsComponent } from "./components/hero-cards/hero-cards.component";
 import { AccordionComponent } from "./components/accordion/accordion.component";
 import { StickyOfferComponent } from "./components/sticky-offer/sticky-offer.component";
+import { loadLandingPages } from './services/landing-page.actions';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { LandingPageState } from './services/landing-page.reducer';
+import { AppState } from './app.config';
 
 @Component({
   selector: 'app-root',
@@ -22,12 +27,16 @@ import { StickyOfferComponent } from "./components/sticky-offer/sticky-offer.com
 })
 export class AppComponent {
   title = 'es-2-lpcinema-angular';
-  stack: StackEntry | undefined;
 
-  constructor(readonly contentStackService: ContentStackService) {
-    this.contentStackService.fetchLandingPages().subscribe(entries => {
-      this.stack = entries[0][0] as StackEntry;
-    })
+  stack: StackEntry | undefined | null;
+  store = inject(Store<AppState>);
+
+  constructor() {
+    this.store.select<StackEntry | null>((state : AppState) => state.landingPages.stackEntry).subscribe(stackEntry => this.stack = stackEntry);
+  }
+
+  ngOnInit(): void {
+    this.store.dispatch(loadLandingPages());
   }
 
   get sticky() {

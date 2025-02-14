@@ -2,20 +2,10 @@ import { ApplicationConfig, InjectionToken, provideZoneChangeDetection } from '@
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
-import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { Config } from 'contentstack';
-
-// Config {
-//     api_key: string;
-//     delivery_token: string;
-//     environment: string;
-//     region?: Region;
-//     branch?: string;
-//     live_preview?: LivePreview;
-//     plugins?: ContentstackPlugin[];
-//     fetchOptions?: FetchOptions;
-//     early_access?: string[]
-// }
+import { LandingPageEffects } from './services/landing-page.effects.service';
+import { landingPageReducer, LandingPageState } from './services/landing-page.reducer';
+import { localStorageMetaReducer } from './services/local-storage.metareducer';
 
 export const CONTENTSTACK_CONFIG = new InjectionToken<Config>('Config');
 
@@ -27,13 +17,20 @@ const contentstackConfig = {
   branch: 'main',
 };
 
+export interface AppState {
+  landingPages: LandingPageState;
+}
+
 export const appConfig: ApplicationConfig = {
   providers: [
     { provide: CONTENTSTACK_CONFIG, useValue: contentstackConfig },
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideAnimationsAsync(),
-    // provideStore({ landingPages: landingPageReducer }),
-    // provideEffects([LandingPageEffects]),
+    provideStore<AppState>(
+      { landingPages: landingPageReducer },
+      { metaReducers: [localStorageMetaReducer] }
+    ),
+    provideEffects([LandingPageEffects]),
     // provideStoreDevtools({ maxAge: 25 })
   ]
 };
