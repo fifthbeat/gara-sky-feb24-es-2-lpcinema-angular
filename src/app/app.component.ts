@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
-import { ContentStackService } from './services/content-stack.service';
 import { HeaderComponent } from "./components/header/header.component";
 import { AccordionGroup, BannerDiscount, BaseEntry, CardList, Carousel, HeadingEditorial, Hero, Separator, StackEntry, Sticky } from './models/stack-entry';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,11 +11,10 @@ import { OfferBoxComponent } from "./components/offer-box/offer-box.component";
 import { HeroCardsComponent } from "./components/hero-cards/hero-cards.component";
 import { AccordionComponent } from "./components/accordion/accordion.component";
 import { StickyOfferComponent } from "./components/sticky-offer/sticky-offer.component";
-import { loadLandingPages } from './services/landing-page.actions';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { LandingPageState } from './services/landing-page.reducer';
 import { AppState } from './app.config';
+import { SeoService } from './services/seo.service';
+import { loadLandingPages } from './services/landing-page/landing-page.actions';
 
 @Component({
   selector: 'app-root',
@@ -26,13 +24,18 @@ import { AppState } from './app.config';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'es-2-lpcinema-angular';
 
   stack: StackEntry | undefined | null;
   store = inject(Store<AppState>);
+  seoService = inject(SeoService);
 
   constructor() {
-    this.store.select<StackEntry | null>((state : AppState) => state.landingPages.stackEntry).subscribe(stackEntry => this.stack = stackEntry);
+    this.store.select<StackEntry | null>((state : AppState) => state.landingPages.stackEntry).subscribe(stackEntry => {
+      this.stack = stackEntry;
+      if (stackEntry) {
+        this.seoService.updateSeo(stackEntry);
+      }
+    });
   }
 
   ngOnInit(): void {

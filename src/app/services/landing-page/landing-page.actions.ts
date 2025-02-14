@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { StackEntry } from '../models/stack-entry';
+import { StackEntry } from '../../models/stack-entry';
 
 export const loadLandingPages = createAction('[Landing Pages] Load Landing Pages');
 

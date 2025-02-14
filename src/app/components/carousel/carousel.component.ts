@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, input, OnInit, signal } from '@angular/core';
+import { AfterViewInit, Component, CUSTOM_ELEMENTS_SCHEMA, input, signal } from '@angular/core';
 import { Carousel } from '../../models/stack-entry';
 import { CommonModule } from '@angular/common';
 import { SwiperContainer } from 'swiper/element';

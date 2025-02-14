@@ -1,4 +1,4 @@
-import { inject, Inject, Injectable, InjectionToken } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import Contentstack from 'contentstack';
 import { Stack, Config } from 'contentstack';
 import { from, Observable } from 'rxjs';

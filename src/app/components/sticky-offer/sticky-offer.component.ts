@@ -1,4 +1,3 @@
-import { Price } from './../../models/stack-entry';
 import { CommonModule } from '@angular/common';
 import { Component, input } from '@angular/core';
 import { Sticky } from '../../models/stack-entry';

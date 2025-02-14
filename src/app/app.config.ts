@@ -3,9 +3,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { Config } from 'contentstack';
-import { LandingPageEffects } from './services/landing-page.effects.service';
-import { landingPageReducer, LandingPageState } from './services/landing-page.reducer';
 import { localStorageMetaReducer } from './services/local-storage.metareducer';
+import { LandingPageEffects } from './services/landing-page/landing-page.effects.service';
+import { LandingPageState, landingPageReducer } from './services/landing-page/landing-page.reducer';
 
 export const CONTENTSTACK_CONFIG = new InjectionToken<Config>('Config');
 

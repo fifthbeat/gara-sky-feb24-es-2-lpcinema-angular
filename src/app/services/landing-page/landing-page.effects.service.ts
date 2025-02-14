@@ -3,10 +3,10 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { mergeMap, map, catchError, withLatestFrom, filter } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ContentStackService } from '../services/content-stack.service';
 import { LandingPageState } from './landing-page.reducer';
-import { StackEntry } from '../models/stack-entry';
 import { loadLandingPages, loadLandingPagesSuccess, loadLandingPagesFailure } from './landing-page.actions';
+import { StackEntry } from '../../models/stack-entry';
+import { ContentStackService } from '../content-stack.service';
 
 @Injectable({ providedIn: 'root' })
 export class LandingPageEffects {

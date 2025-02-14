@@ -1,6 +1,13 @@
 export interface StackEntry extends BaseEntry {
   dynamic: BaseEntry[];
   sticky: BaseEntry[];
+  seo: {
+    canonical: string;
+    description: string;
+    no_follow: boolean;
+    no_index: boolean;
+    title: string;
+  };
 }
 
 // ----------------- COMMON TYPES -----------------

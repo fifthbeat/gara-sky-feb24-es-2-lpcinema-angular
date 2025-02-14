@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
-import { StackEntry } from '../models/stack-entry';
 import { loadLandingPages, loadLandingPagesSuccess, loadLandingPagesFailure } from './landing-page.actions';
+import { StackEntry } from '../../models/stack-entry';
 
 export interface LandingPageState {
   stackEntry: StackEntry | null;
