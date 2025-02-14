@@ -13,7 +13,7 @@ describe('Landing Page E2E Tests', () => {
     cy.contains('Sky Tv+ Sky Cinema con Paramount+').should('be.visible');
     // Check that localStorage has been populated with the state.
     cy.window().then((win) => {
-      const storedState = win.localStorage.getItem('landingPagesState');
+      const storedState = win.localStorage.getItem('ReduxState');
       expect(storedState, 'State is saved in localStorage').to.exist;
       const parsed = JSON.parse(storedState!);
       expect(parsed.state.landingPages.stackEntry.title).to.equal('Angular');
