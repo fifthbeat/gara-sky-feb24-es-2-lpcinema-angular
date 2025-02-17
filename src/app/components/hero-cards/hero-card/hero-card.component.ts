@@ -12,4 +12,7 @@ export class HeroCardComponent {
 
   data = input.required<CardOffer>();
 
+  safeId(title: string): string {
+    return title.replace(/[^a-zA-Z0-9]/g, '-').toLowerCase(); // Replace non-alphanumeric with hyphens and lowercase
+  }
 }

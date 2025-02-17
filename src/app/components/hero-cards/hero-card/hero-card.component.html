@@ -1,19 +1,23 @@
-<div class="card" role="article">
+<div class="card" role="article" [attr.aria-describedby]="'card-description-' + safeId(data().title)">
   <img [src]="data().image.file.url"
        [alt]="data().image.alt"
-       class="card-img-top"
-       [attr.aria-describedby]="'desc-' + data().title"  loading="lazy"/>
+       class="card-img-top" loading="lazy"
+       [attr.aria-describedby]="'image-description-' + safeId(data().title)"/>
 
   <img [src]="data().thumb_image.file.url"
        [alt]="data().thumb_image.alt"
-       class="thumb"
-       [attr.aria-describedby]="'desc-' + data().thumb_image.alt"  loading="lazy"/>
+       class="thumb" loading="lazy"
+       [attr.aria-describedby]="'thumbnail-description-' + safeId(data().title)"/>
 
   <div class="card-body">
     <h3 class="body-large text-center mb-3 mt-4 fw-medium"
-        [attr.id]="'title-' + data().title">{{data().title}}</h3>
+        [attr.id]="'title-' + safeId(data().title)">{{data().title}}</h3>
     <p class="text-center"
-       [attr.id]="'desc-' + data().title"
-       role="contentinfo">{{data().description}}</p>
+       [attr.id]="'desc-' + safeId(data().title)"
+       role="contentinfo"
+       [attr.id]="'card-description-' + safeId(data().title)">{{data().description}}</p>
+
+    <p [attr.id]="'image-description-' + safeId(data().title)" hidden>Descrizione dell'immagine principale: {{data().image.alt}}</p>
+    <p [attr.id]="'thumbnail-description-' + safeId(data().title)" hidden>Descrizione della thumbnail: {{data().thumb_image.alt}}</p>
   </div>
 </div>

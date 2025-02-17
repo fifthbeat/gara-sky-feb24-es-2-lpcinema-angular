@@ -16,7 +16,10 @@
   </div>
   <div class="body-fluid reset-bg lh-fix" role="text" *ngIf="price().label" [innerHtml]="price().label"></div>
   @if (info()) {
-  <button class="body-small btn btn-link fw-medium sky-text-blue-color text-decoration-none py-1 px-0" (click)="open(content)" aria-expanded="false">
+  <button class="body-small btn btn-link fw-medium sky-text-blue-color text-decoration-none py-1 px-0"
+    [attr.aria-label]="info()?.label || 'More info'"
+    (click)="open(content)"
+    aria-expanded="false">
     {{info()?.label}}
     <img class="icon-small" src="/icons/info.svg" alt="" aria-hidden="true" />
   </button>
