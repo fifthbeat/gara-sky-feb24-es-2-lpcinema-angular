@@ -1,16 +1,25 @@
+FROM node:22-alpine AS build
+
+WORKDIR /app
+
+COPY . ./
+
+RUN rm -rf /app/node_modules
+
+RUN rm -rf /app/dist
+
+RUN npm i
+
+RUN npm run build
+
 FROM nginx:1.23.1-alpine
 
-## Remove default nginx index page
 RUN rm -rf /usr/share/nginx/html/*
 
-# Copy nginx.conf
 ADD docker/nginx/nginx.conf /etc/nginx/nginx.conf
 
-# Copy from builder stage
-COPY dist/es-2-lpcinema-angular/browser /usr/share/nginx/html
+COPY --from=build /app/dist/es-2-lpcinema-angular/browser /usr/share/nginx/html/
 
-# Expose nginx port(s)
 EXPOSE 80
 
-# Entrypoint to nginx
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
