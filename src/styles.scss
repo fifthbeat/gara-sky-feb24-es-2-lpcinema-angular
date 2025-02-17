@@ -223,8 +223,9 @@ pre {
 }
 
 .reset-bg {
+  color: white;
   background-clip: text;
-  background-color: get-color('dark');
+  background-color: black;
   -webkit-text-fill-color: transparent;
 }
 
