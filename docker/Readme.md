@@ -5,7 +5,7 @@
 Per costruire l'immagine Docker, eseguire il seguente comando:
 
 ```sh
-docker build -f Dockerfile -t es2-lpcinema-angular:0.0.1 .
+docker build -f docker/Dockerfile -t es2-lpcinema-angular:0.0.1 .
 ```
 
 ## Esecuzione dell'Immagine
