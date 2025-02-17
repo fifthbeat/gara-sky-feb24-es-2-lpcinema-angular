@@ -4,7 +4,7 @@
     <button type="button" class="border border-2 btn-close p-3" aria-label="Close modal" (click)="modal.dismiss()"></button>
   </div>
   <div class="modal-body" role="dialog" aria-labelledby="info-modal-title">
-    <h4 class="body-large fw-medium mb-4" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
+    <h4 class="section-title fw-medium mb-4" id="info-modal-title">{{info()?.modal?.[0]?.title_modal}}</h4>
     <div [innerHTML]="info()?.modal?.[0]?.content" role="article"></div>
   </div>
   }
